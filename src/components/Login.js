@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-// import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 
 const Api_URL = "https://563j7r-5000.csb.app";
 
@@ -10,7 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  //   const { login } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const changeHandler = (e) => {
@@ -32,7 +32,8 @@ const Login = () => {
 
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      //   login(responseData.user.role); // Pass the user role to the login function
+      // login(responseData.user.role); // Pass the user role to the login function
+      login();
       navigate("/");
     } else {
       alert(responseData.errors);

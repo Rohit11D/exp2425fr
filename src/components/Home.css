@@ -1,0 +1,155 @@
+/* Resetting margin, padding and box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #003366;
+  color: white;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: #ffa500;
+}
+
+.cta-button {
+  background-color: #ffa500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e69500;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)),
+    url("") no-repeat center center/cover;
+  color: white;
+  height: 80vh;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Services Section */
+.services {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+}
+
+/* Footer */
+.footer {
+  background-color: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content p {
+  margin-bottom: 5px;
+}
+
+.footer-content a {
+  color: #ffa500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: #e69500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    /* display: none; */
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -16,6 +16,7 @@ const Register = ({ history }) => {
   };
 
   const signup = async () => {
+    console.log("in signup");
     let responseData;
     await fetch(Api_URL + `/register`, {
       method: "POST",

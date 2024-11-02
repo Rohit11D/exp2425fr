@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import "./Register.css"; // Ensure this import is correct
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useAuth } from "./AuthContext";
 
 const Api_URL = "https://563j7r-5000.csb.app";
 
-const Register = ({ history }) => {
+const Login = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    // role: "student",
   });
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const signup = async () => {
-    console.log("in signup");
+  const handleLogin = async () => {
     let responseData;
-    await fetch(Api_URL + `/register`, {
+    await fetch(Api_URL + `/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -28,29 +29,20 @@ const Register = ({ history }) => {
     })
       .then((response) => response.json())
       .then((data) => (responseData = data));
+
     if (responseData.success) {
       localStorage.setItem("auth-token", responseData.token);
-      // if (formData.role === 'expert') {
-      //     window.location.replace('/ExpertDashboard');
-      // } else if (formData.role === 'student') {
-      //     window.location.replace('/StudentDashboard');
-      // }
-      window.location.replace("/");
+      // login(responseData.user.role); // Pass the user role to the login function
+      login();
+      navigate("/");
     } else {
       alert(responseData.errors);
     }
   };
 
   return (
-    <div className="register-container">
-      <h1>Register</h1>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={changeHandler}
-        type="text"
-        placeholder="Your Name"
-      />
+    <div className="form-container">
+      <h2>Login</h2>
       <input
         name="email"
         value={formData.email}
@@ -65,15 +57,11 @@ const Register = ({ history }) => {
         type="password"
         placeholder="Password"
       />
-      {/* <select name="role" value={formData.role} onChange={changeHandler}>
-        <option value="student">Student</option>
-        <option value="expert">Expert</option>
-      </select> */}
-      <button type="button" onClick={signup}>
-        Register
+      <button type="submit" onClick={handleLogin}>
+        Login
       </button>
     </div>
   );
 };
 
-export default Register;
+export default Login;

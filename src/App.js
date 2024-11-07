@@ -12,6 +12,9 @@ import Home from "./components/Home.js";
 // import StudentDashboard from './components/StudentDashboard.js';
 import { AuthProvider } from "./components/AuthContext.js";
 // import ResumeViewer from './components/ResumeViewer';
+import MainMap from "./components/MainMap.js";
+import MapPage from "./components/MapPage.js";
+import AnalyticsPage from "./components/AnalyticsPage.js";
 const App = () => {
   return (
     <AuthProvider>
@@ -20,6 +23,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/mainMap" element={<MainMap />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

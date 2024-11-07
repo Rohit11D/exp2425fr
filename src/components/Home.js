@@ -11,6 +11,10 @@ const Home = () => {
         <div class="logo">DisasterHelp</div>
         <nav>
           <ul class="nav-links">
+            <button class="cta-button">
+              {" "}
+              <Link to="/MainMap">Alerts</Link>
+            </button>
             <li>
               <a href="#">Home</a>
             </li>

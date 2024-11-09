@@ -41,7 +41,19 @@ body {
 .navbar .nav-links a:hover {
   color: #ffa500;
 }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+  transition: 0.3s;
+}
 .cta-button {
   background-color: #ffa500;
   color: white;
@@ -141,8 +153,9 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* .navbar .nav-links {
-    /* display: none; */
+  .navbar .nav-links {
+    display: none;
+  }
 
   .hero-content h1 {
     font-size: 2.5rem;
@@ -151,5 +164,37 @@ body {
   .service-cards {
     flex-direction: column;
     align-items: center;
+  }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Default: hidden */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #003366;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  /* Show nav-links when the open class is added */
+  .nav-links.open {
+    display: flex; /* Visible when open class is applied */
+  }
+
+  .hamburger {
+    display: flex; /* Display hamburger icon on mobile */
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+    transition: 0.3s;
   }
 }

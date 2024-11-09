@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useAuth } from "./AuthContext";
 
 const Home = () => {
   const { isAuthenticated, logout } = useAuth();
+  // Define state and toggle function
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Correctly define isMenuOpen
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Correctly define toggleMenu
+  };
   return (
     <div>
       <header class="navbar">
         <div class="logo">DisasterHelp</div>
         <nav>
-          <ul class="nav-links">
-            <button class="cta-button">
-              {" "}
-              <Link to="/MainMap">Alerts</Link>
+          <ul className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+            <button className="cta-button">
+              <Link to="/mainMap">Events</Link>
             </button>
             <li>
               <a href="#">Home</a>
@@ -42,9 +46,13 @@ const Home = () => {
                 Logout
               </a>
             )}
-
-            <button class="cta-button">Get Help</button>
+            <button className="cta-button">Get Help</button>
           </ul>
+          <div className="hamburger" onClick={toggleMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
         </nav>
       </header>
 

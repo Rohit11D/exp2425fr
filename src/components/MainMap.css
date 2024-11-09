@@ -1,0 +1,77 @@
+/* Main container styling */
+.main-map-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+}
+
+/* List styling */
+.main-map-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Card styling for MapPage and AnalyticsPage */
+.main-map-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.main-map-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Link styling */
+.main-map-link {
+  text-decoration: none;
+  color: #003366;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.main-map-link:hover {
+  color: #ffa500;
+}
+
+.navba {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #003366;
+  color: white;
+}
+
+.navba .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navba .nav-link {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navba .nav-link a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navba .nav-link a:hover {
+  color: #ffa500;
+}

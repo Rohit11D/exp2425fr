@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/mainMap" element={<MainMap />} />
           <Route path="/map" element={<MapPage />} />
-          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/mainMap/analytics" element={<AnalyticsPage />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

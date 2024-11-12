@@ -15,6 +15,7 @@ import { AuthProvider } from "./components/AuthContext.js";
 import MainMap from "./components/MainMap.js";
 import MapPage from "./components/MapPage.js";
 import AnalyticsPage from "./components/AnalyticsPage.js";
+import ResMap from "./components/ResMap.js";
 const App = () => {
   return (
     <AuthProvider>
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/mainMap" element={<MainMap />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/mainMap/analytics" element={<AnalyticsPage />} />
+          <Route path="/resMap" element={<ResMap />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

@@ -19,6 +19,9 @@ const Home = () => {
             <button className="cta-button">
               <Link to="/mainMap">Events</Link>
             </button>
+            <button className="cta-button">
+              <Link to="/resMap">Resources</Link>
+            </button>
             <li>
               <a href="#">Home</a>
             </li>

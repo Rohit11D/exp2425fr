@@ -39,12 +39,12 @@ const ResMap = () => {
       getUserLocation(mapRef.current, setUserLocation); // Set user location on map load
     }
 
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
+    // return () => {
+    //   if (mapRef.current) {
+    //     // mapRef.current.remove();
+    //     // mapRef.current = null;
+    //   }
+    // };
   }, []);
 
   // Update map with filtered resources and show route to nearest resource
@@ -56,13 +56,17 @@ const ResMap = () => {
 
       // Clear all previous markers and routes
       mapRef.current.eachLayer((layer) => {
-        if (layer instanceof L.Marker || layer instanceof L.Routing.Control) {
+        if (
+          (layer.options && layer.options.className === "user-location-icon") ||
+          layer instanceof L.Routing.Control
+        ) {
           mapRef.current.removeLayer(layer);
         }
       });
 
       // Add filtered resource markers
       addResourceMarkers(mapRef.current, filteredResources);
+
       console.log("nearest ul");
       // Show route to the nearest resource if user location is set
       console.log(userLocation);
@@ -84,7 +88,7 @@ const ResMap = () => {
 
   // Handle resource type dropdown change
   const handleResourceTypeChange = (e) => {
-    setSelectedResourceType(e.target.value);
+    // setSelectedResourceType(e.target.value);
   };
 
   return (

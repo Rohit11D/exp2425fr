@@ -92,3 +92,10 @@ body {
     height: 400px; /* Smaller height for mobile devices */
   }
 }
+
+
+
+.user-location-icon img {
+  display: block; /* Ensure image is displayed */
+  visibility: visible; /* Force visibility */
+}

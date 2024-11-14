@@ -1,6 +1,8 @@
 import L from "leaflet";
+import polyline from "polyline";
 import "leaflet-routing-machine";
 import "./ResMap.css";
+
 let userMarker = null;
 let userCircle = null;
 
@@ -72,10 +74,10 @@ export async function getUserLocation(map, setUserLocation) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
-        // const lat = position.coords.latitude;
-        // const lon = position.coords.longitude;
-        const lat = 23.8419968;
-        const lon = 91.4161664;
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        // const lat = 23.8419968;
+        // const lon = 91.4161664;
         console.log("User location:", lat, lon);
         try {
           // const response = await fetch(
@@ -190,7 +192,7 @@ export async function getNearestResource(userLocation, resources) {
       nearestResource = resource;
     }
   });
-
+  console.log("in getN", nearestResource);
   return nearestResource;
 }
 
@@ -205,6 +207,7 @@ function calculateDistance(userLocation, resource) {
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  console.log("dist", c);
   return R * c;
 }
 
@@ -249,24 +252,45 @@ export function showRoute(map, userLocation, nearestResource) {
     console.error("User location or nearest resource is undefined.");
     return;
   }
-
+  const { uLat, uLon } = userLocation;
   const userLatLng = L.latLng(userLocation.lat, userLocation.lng);
   const resourceLatLng = L.latLng(nearestResource.lat, nearestResource.lng);
+  const url1 = `https://api.locationiq.com/v1/directions/driving/${userLocation.lon},${userLocation.lat};${nearestResource.lon},${nearestResource.lat}?key=pk.852d0b8a6bb59c3068618bd15903a59c`;
 
-  const url = `https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lng}&destination=${nearestResource.lat},${nearestResource.lng}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y`;
-
-  fetch(url)
-    .then((response) => response.json())
+  // const url = `https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lng}&destination=${nearestResource.lat},${nearestResource.lng}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y`;
+  // const url = `https://us1.locationiq.com/v1/directions/driving/${userLocation.lng},${userLocation.lat};${nearestResource.lng},${nearestResource.lat}?key=pk.852d0b8a6bb59c3068618bd15903a59c&overview=full`;
+  const options = { method: "GET", headers: { accept: "application/json" } };
+  console.log("route ", nearestResource.lon);
+  console.log(url1);
+  fetch(
+    // "https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lon}&destination=${nearestResource.lat},${nearestResource.lon}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y"
+    url1
+  )
+    .then((res) => res.json())
     .then((data) => {
-      const route = data.routes[0].sections[0].polyline;
-      const routeCoordinates = L.Polyline.fromEncoded(route).getLatLngs();
+      // Check if the response has the routes data
+      if (data.routes && data.routes.length > 0) {
+        // Get the encoded geometry string
+        const encodedGeometry = data.routes[0].geometry;
 
-      // Create route line
-      L.polyline(routeCoordinates, { color: "#3498db", weight: 5 }).addTo(map);
+        // Decode the polyline using polyline.js
+        const routeCoordinates = polyline.decode(encodedGeometry);
+
+        // Convert decoded coordinates into Leaflet's [lat, lng] format
+        const leafletCoordinates = routeCoordinates.map((coord) => [
+          coord[0],
+          coord[1],
+        ]);
+
+        // Create and add the route line to the map
+        L.polyline(leafletCoordinates, { color: "#3498db", weight: 5 }).addTo(
+          map
+        );
+      } else {
+        console.error("No routes found in response.");
+      }
     })
-    .catch((error) => {
-      console.error("Routing error:", error);
-    });
+    .catch((err) => console.error("Routing error:", err));
 }
 
 export function addResourceMarkers(map, resources) {

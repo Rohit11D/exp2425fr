@@ -67,17 +67,17 @@ const ResMap = () => {
       // Add filtered resource markers
       addResourceMarkers(mapRef.current, filteredResources);
 
-      console.log("nearest ul");
+      console.log("nearest fr", filteredResources);
       // Show route to the nearest resource if user location is set
-      console.log(userLocation);
-      console.log("nearest abcd");
+      // console.log(userLocation);
+      // console.log("nearest abcd");
       if (userLocation) {
         console.log("nearest ul");
         const nearestResource = getNearestResource(
           userLocation,
           filteredResources
         );
-        console.log(nearestResource);
+        console.log("this is nearest", nearestResource.lon);
         if (nearestResource) {
           console.log("nearest RK");
           showRoute(mapRef.current, userLocation, nearestResource);

@@ -72,18 +72,21 @@ export async function getUserLocation(map, setUserLocation) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
+        // const lat = position.coords.latitude;
+        // const lon = position.coords.longitude;
+        const lat = 23.8419968;
+        const lon = 91.4161664;
         console.log("User location:", lat, lon);
         try {
           // const response = await fetch(
           //   `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=f8a0aeb4893745f885eba8d86a52e899`
           // );
-          const response = await fetch(
-            "https://ipinfo.io/json?token=33697b03fb250f"
-          );
-          console.log(response);
-          const data = await response.json();
+          // const response = await fetch(
+          //   "https://ipinfo.io/json?token=33697b03fb250f"
+
+          // );
+          // console.log(response);
+          // const data = await response.json();
           console.log("User location:2  ", lat, lon);
           // Store the coordinates in the setCoordinates function
           setUserLocation({ lat, lon });

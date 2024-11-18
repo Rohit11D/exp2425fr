@@ -1,0 +1,99 @@
+/* Join Us Page */
+.join-us-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .join-us-container h2 {
+    color: #003366;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .join-us-container p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1rem;
+  }
+  
+  .join-us-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .join-us-container label {
+    font-size: 1rem;
+    color: #003366;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .join-us-container input,
+  .join-us-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .join-us-container input:focus,
+  .join-us-container textarea:focus {
+    border-color: #003366;
+    outline: none;
+  }
+  
+  .join-us-container textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .join-us-container button {
+    background-color: #ffa500;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .join-us-container button:hover {
+    background-color: #e69500;
+  }
+  
+  .vol-dash{
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .join-us-container {
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .join-us-container h2 {
+      font-size: 1.8rem;
+    }
+  
+    .join-us-container input,
+    .join-us-container textarea {
+      font-size: 0.9rem;
+    }
+  
+    .join-us-container button {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  }
+  

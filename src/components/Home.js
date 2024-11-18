@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useAuth } from "./AuthContext";
@@ -10,6 +10,17 @@ const Home = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Correctly define toggleMenu
   };
+  const [isVolunteer, setIsVolunteer] = useState(false);
+
+  useEffect(() => {
+    // Check if volunteer data exists in local storage
+    const volunteer = localStorage.getItem("volunteer");
+    if (volunteer) {
+      setIsVolunteer(true);
+    }
+  }, []);
+
+
   return (
     <div>
       <header class="navbar">
@@ -49,7 +60,9 @@ const Home = () => {
                 Logout
               </a>
             )}
-            <button className="cta-button">Get Help</button>
+                  <Link to="/join-us">
+                  <button className="cta-button">Join Us</button>
+      </Link> 
           </ul>
           <div className="hamburger" onClick={toggleMenu}>
             <span className="bar"></span>
@@ -64,10 +77,18 @@ const Home = () => {
           <h1>Disaster Management & Relief</h1>
           <p>Preparedness, response, and recovery for a safer world.</p>
           <button class="cta-button">Learn More</button>
+          
         </div>
       </section>
 
       <section class="services">
+        <div className="vol-dash">
+      {isVolunteer && (
+        <Link to="/volunteerDashboard" className="cta-button">
+          Volunteer Dashboard
+        </Link>
+      )}
+      </div>
         <h2>Our Services</h2>
         <div class="service-cards">
           <div class="card">

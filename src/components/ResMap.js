@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "./ResMap.css";
 import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
 import {
   initMap,
   addResourceMarkers,
@@ -10,7 +11,7 @@ import {
   getUserLocation,
 } from "./ResMapUtils";
 
-const Api_URL = "https://563j7r-5000.csb.app";
+const Api_URL = "http://localhost:5000";
 
 const ResMap = () => {
   const mapRef = useRef(null);
@@ -53,11 +54,11 @@ const ResMap = () => {
       const filteredResources = resources.filter((resource) =>
         selectedResourceType ? resource.type === selectedResourceType : true
       );
-
+   console.log("selected resource: ",selectedResourceType);
       // Clear all previous markers and routes
       mapRef.current.eachLayer((layer) => {
         if (
-          (layer.options && layer.options.className === "user-location-icon") ||
+          (layer.options && layer.options.className === "resource-marker") ||
           layer instanceof L.Routing.Control
         ) {
           mapRef.current.removeLayer(layer);
@@ -72,26 +73,52 @@ const ResMap = () => {
       // console.log(userLocation);
       // console.log("nearest abcd");
       if (userLocation) {
+        (async()=>{
+          try{
         console.log("nearest ul");
-        const nearestResource = getNearestResource(
+        const nearestResource = await getNearestResource(
           userLocation,
           filteredResources
         );
-        console.log("this is nearest", nearestResource.lon);
+        const { lat, lng } = nearestResource;
+
+    // Log the coordinates
+    console.log("Nearest Resource Coordinates:", lat, lng);
+        console.log("this is nearest", nearestResource);
+        // console.log("this is nearest", nearestResource.lng);
         if (nearestResource) {
           console.log("nearest RK");
           showRoute(mapRef.current, userLocation, nearestResource);
+        } else {
+          console.log("No nearest resource found.");
         }
+
+      } catch (error) {
+        console.error("Error finding nearest resource:", error);
+      }
+    })();
+        
       }
     }
   }, [resources, selectedResourceType, userLocation]);
 
   // Handle resource type dropdown change
   const handleResourceTypeChange = (e) => {
-    // setSelectedResourceType(e.target.value);
+    setSelectedResourceType(e.target.value);
   };
 
   return (
+    <div>
+      <header class="navba">
+        <div class="logo">DisasterHelp</div>
+        <nav>
+          <ul className="nav-link">
+            <li>
+              <a href="./">Home</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
     <div className="res-map-container">
       <select className="map-dropdown" onChange={handleResourceTypeChange}>
         <option value="">Select Resource Type</option>
@@ -102,6 +129,7 @@ const ResMap = () => {
       <div className="map-container">
         <div id="map"></div>
       </div>
+    </div>
     </div>
   );
 };

@@ -184,7 +184,7 @@ function updateUserLocation(latitude, longitude, map) {
 export async function getNearestResource(userLocation, resources) {
   let minDistance = Infinity;
   let nearestResource = null;
-  console.log("in nearest resource");
+  console.log("in nearest resource",resources);
   resources.forEach((resource) => {
     const distance = calculateDistance(userLocation, resource);
     if (distance < minDistance) {
@@ -197,9 +197,11 @@ export async function getNearestResource(userLocation, resources) {
 }
 
 function calculateDistance(userLocation, resource) {
+  console.log("in distance",resource);
+  console.log("in distance user ",userLocation);
   const R = 6371; // Earth radius in km
   const dLat = ((resource.lat - userLocation.lat) * Math.PI) / 180;
-  const dLon = ((resource.lng - userLocation.lng) * Math.PI) / 180;
+  const dLon = ((resource.lng - userLocation.lon) * Math.PI) / 180;
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos((userLocation.lat * Math.PI) / 180) *
@@ -246,24 +248,29 @@ function calculateDistance(userLocation, resource) {
 //     })
 //     .addTo(map);
 // }
-
+let routeLayer = null;
 export function showRoute(map, userLocation, nearestResource) {
   if (!userLocation || !nearestResource) {
     console.error("User location or nearest resource is undefined.");
     return;
   }
   const { uLat, uLon } = userLocation;
-  const userLatLng = L.latLng(userLocation.lat, userLocation.lng);
+  const userLatLng = L.latLng(userLocation.lat, userLocation.lon);
   const resourceLatLng = L.latLng(nearestResource.lat, nearestResource.lng);
-  const url1 = `https://api.locationiq.com/v1/directions/driving/${userLocation.lon},${userLocation.lat};${nearestResource.lon},${nearestResource.lat}?key=pk.852d0b8a6bb59c3068618bd15903a59c`;
+  const url1 = `https://api.locationiq.com/v1/directions/driving/${userLocation.lon},${userLocation.lat};${nearestResource.lng},${nearestResource.lat}?key=pk.852d0b8a6bb59c3068618bd15903a59c`;
 
   // const url = `https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lng}&destination=${nearestResource.lat},${nearestResource.lng}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y`;
   // const url = `https://us1.locationiq.com/v1/directions/driving/${userLocation.lng},${userLocation.lat};${nearestResource.lng},${nearestResource.lat}?key=pk.852d0b8a6bb59c3068618bd15903a59c&overview=full`;
   const options = { method: "GET", headers: { accept: "application/json" } };
-  console.log("route ", nearestResource.lon);
+  console.log("route ", nearestResource.lng);
   console.log(url1);
+  if (routeLayer) {
+    routeLayer.clearLayers();
+  } else {
+    routeLayer = L.layerGroup().addTo(map); // Create a new Layer Group
+  }
   fetch(
-    // "https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lon}&destination=${nearestResource.lat},${nearestResource.lon}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y"
+    // "https://router.hereapi.com/v8/routes?transportMode=car&origin=${userLocation.lat},${userLocation.lon}&destination=${nearestResource.lat},${nearestResource.lng}&0n_6nB8XrO1KsJFkYV4KwqBWBZYuKaWWCxry5kZqO3Y"
     url1
   )
     .then((res) => res.json())
@@ -283,9 +290,10 @@ export function showRoute(map, userLocation, nearestResource) {
         ]);
 
         // Create and add the route line to the map
-        L.polyline(leafletCoordinates, { color: "#3498db", weight: 5 }).addTo(
+        const routePolyline = L.polyline(leafletCoordinates, { color: "#3498db", weight: 5 }).addTo(
           map
         );
+        routeLayer.addLayer(routePolyline);
       } else {
         console.error("No routes found in response.");
       }

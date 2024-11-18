@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useAuth } from "./AuthContext";
 
-const Api_URL = "https://563j7r-5000.csb.app";
+const Api_URL = "http://localhost:5000";
 
 const Login = () => {
   const [formData, setFormData] = useState({

@@ -16,6 +16,11 @@ import MainMap from "./components/MainMap.js";
 import MapPage from "./components/MapPage.js";
 import AnalyticsPage from "./components/AnalyticsPage.js";
 import ResMap from "./components/ResMap.js";
+import JoinUs from "./components/JoinUs";
+import LoginVol from "./components/LoginVolunteer.js";
+import VolunteerDashboard from "./components/VolunteerDashboard.js";
+import VolunteerGuide from "./components/VolunteerGuide.js";
+import SafetyGuide from "./components/SafetyGuide .js";
 const App = () => {
   return (
     <AuthProvider>
@@ -28,6 +33,11 @@ const App = () => {
           <Route path="/map" element={<MapPage />} />
           <Route path="/mainMap/analytics" element={<AnalyticsPage />} />
           <Route path="/resMap" element={<ResMap />} />
+          <Route path="/join-us" element={<JoinUs />} />
+          <Route path="/loginVol" element={<LoginVol />} />
+          <Route path="/volunteerDashboard" element={<VolunteerDashboard />} />
+          <Route path="/volunteerGuide" element={<VolunteerGuide />} />
+          <Route path="/safetyGuide" element={<SafetyGuide />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

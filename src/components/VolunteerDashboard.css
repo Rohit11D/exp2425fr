@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and borders are included in width calculation */
+  }
+  
+  body {
+    width: 100%;
+    overflow-x: hidden; /* Hides horizontal overflow */
+    background-color: #f0f0f0; /* Light background to check if the issue persists */
+  }
+  
+  /* Centering and Constraining Layout */
+  .vol-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 20px; /* Adjust padding if needed */
+    max-width: 1200px; /* Constrain max width */
+    width: 100%;
+    margin: 0 auto; /* Center content */
+  }
+  
+  .vol-header {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .vol-header h1 {
+    font-size: 2.5rem;
+    color: #003366;
+    margin-bottom: 10px;
+  }
+  
+  .vol-header p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .vol-tips,
+  .vol-opportunities,
+  .vol-resources,
+  .emergency-contacts {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .vol-tips h2,
+  .vol-opportunities h2,
+  .vol-resources h2,
+  .emergency-contacts h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  /* Tip Card Styles */
+  .tip-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tip-card h3 {
+    font-size: 1.5rem;
+    color: #003366;
+    margin-bottom: 10px;
+  }
+  
+  .tip-card p {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .cta-button {
+    background-color: #ffa500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .cta-button:hover {
+    background-color: #e69500;
+  }
+  
+  /* Volunteer Opportunities Section */
+  .vol-opportunities ul,
+  .vol-resources ul,
+  .emergency-contacts ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vol-opportunities li,
+  .vol-resources li,
+  .emergency-contacts li {
+    margin-bottom: 10px;
+  }
+  
+  .vol-opportunities a,
+  .vol-resources a {
+    text-decoration: none;
+    color: #003366;
+  }
+  
+  .vol-opportunities a:hover,
+  .vol-resources a:hover {
+    color: #ffa500;
+  }
+  
+  .emergency-contacts li strong {
+    color: #003366;
+  }
+  
+  /* Navbar Fix */
+  .navbar {
+    width: 100%; /* Ensures navbar does not stretch beyond the page */
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box; /* Prevent overflow */
+    text-align: center; /* Center the navbar items */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  .navbar a:hover {
+    background-color: #ffa500;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  /* Adding Reset for Flexbox Container (if needed) */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .container > * {
+    flex: 1;
+    max-width: 100%;
+  }
+  

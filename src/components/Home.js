@@ -101,11 +101,14 @@ for (let i = 0; i < news.length; i++) {
             <button className="cta-button">
               <Link to="/resMap">Resources</Link>
             </button> */}
+            <button className="cta-button">
+              <Link to="/donate">Donate</Link>
+            </button>
             <li><Link to="/mainMap">Events</Link></li>
             <li><Link to="/resMap">Resources</Link></li>
-            <li>
+            {/* <li>
               <a href="#">Home</a>
-            </li>
+            </li> */}
             <li>
               <a href="#services">Services</a>
             </li>
@@ -131,7 +134,7 @@ for (let i = 0; i < news.length; i++) {
               </a>
             )}
              <button className="cta-button">
-              <Link to="/join-us">Join Us</Link>
+              <Link to="/join-us">JoinUs</Link>
             </button>
  
           </ul>
@@ -147,7 +150,7 @@ for (let i = 0; i < news.length; i++) {
         <div class="hero-content">
           <h1>Disaster Management & Relief</h1>
           <p>Preparedness, response, and recovery for a safer world.</p>
-          <button class="cta-button">Learn More</button>
+          {/* <button class="cta-button">Learn More</button> */}
           
         </div>
       </section>
@@ -199,7 +202,7 @@ for (let i = 0; i < news.length; i++) {
           DisasterHelp is committed to providing comprehensive disaster
           management solutions. Our mission is to ensure preparedness,
           effective response, and sustainable recovery for communities affected
-          by disasters. We work with local and international partners to build
+          by disasters. We work with local partners to build
           resilience and save lives.
         </p>
       </section>

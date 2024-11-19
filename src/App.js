@@ -39,7 +39,7 @@ const App = () => {
           <Route path="/volunteerDashboard" element={<VolunteerDashboard />} />
           <Route path="/volunteerGuide" element={<VolunteerGuide />} />
           <Route path="/safetyGuide" element={<SafetyGuide />} />
-          <Route path="/donation" element={<Donation />} />
+          <Route path="/donate" element={<Donation />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

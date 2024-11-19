@@ -1,0 +1,115 @@
+/* Donation Page Styles */
+
+.firstdiv {
+    width: 100%;
+    min-height: 100vh; /* Ensures full viewport height */
+    background: url('../images/helpHands3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding-top: 60px;
+}
+
+.donation-page {
+    max-width: 800px;
+    
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: rgba(35, 200, 241, 0.6);
+    padding: 40px 20px;
+    width: 30%;
+    height: fit-content;
+}
+  /* .donation-page:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+    /* background: linear-gradient(135deg, #ffa500, #003366); */
+    /* z-index: -1;
+    filter: blur(30px);
+    border-radius: 15px;
+  } */ 
+  
+/* .donation-page {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+  } */
+  
+  .donation-page h2 {
+    font-size: 2rem;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .donation-info input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #606364;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #141111;
+    transition: border-color 0.3s ease;
+  }
+  input::placeholder{
+    color: #141111;
+  }
+  .donation-info input:focus {
+    /* border-color: #ffa500; */
+    outline: none;
+  }
+  
+  .submitOrder {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .submit-order-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-order-btn:hover {
+    background-color: #002244;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .donation-page {
+      padding: 20px 15px;
+    }
+  
+    .donation-page h2 {
+      font-size: 1.5rem;
+    }
+  
+    .donation-info input {
+      font-size: 0.9rem;
+    }
+  
+    .submit-order-btn {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+  }
+  

@@ -1,11 +1,13 @@
 /* global Razorpay */
 
 import React, { useState, useEffect } from "react";
-// import "../pages/CSS/NewOrder.css";  // Adjust the styling as needed
+import './Donation.css';
+import { useNavigate } from "react-router-dom";
 
 const Api_URL = "http://localhost:5000";
 
 const Donation = () => {
+    const navigate = useNavigate();
     const [donationAmount, setDonationAmount] = useState(0);
     const [donationData, setDonationData] = useState({
         donorInfo: {
@@ -90,7 +92,7 @@ const Donation = () => {
             const razOrder = data.razorpayorder;
 
             const options = {
-                key: "your_razorpay_key_here",  // Use your Razorpay key here
+                key: "r",  // Use your Razorpay key here
                 amount: razOrder.amount,
                 currency: "INR",
                 name: "Charity Organization",
@@ -136,6 +138,7 @@ const Donation = () => {
             const data = await result.json();
             if (data.success) {
                 alert("Donation verified successfully. Thank you for your contribution.");
+                navigate("/");
             } else {
                 alert("Payment verification failed: " + data.message);
             }
@@ -146,24 +149,67 @@ const Donation = () => {
     };
 
     return (
-        <div className="back">
-            <div className="new-order-container">
-                <h2>Make a Donation</h2>
-                <div className="donation-info">
-                    <input name="name" value={donationData.donorInfo.name} onChange={handleChange} placeholder="Your Name" />
-                    <input name="email" value={donationData.donorInfo.email} onChange={handleChange} placeholder="Your Email" />
-                    <input name="address" value={donationData.donorInfo.address} onChange={handleChange} placeholder="Address" />
-                    <input name="city" value={donationData.donorInfo.city} onChange={handleChange} placeholder="City" />
-                    <input name="state" value={donationData.donorInfo.state} onChange={handleChange} placeholder="State" />
-                    <input name="country" value={donationData.donorInfo.country} onChange={handleChange} placeholder="Country" />
-                    <input name="pinCode" value={donationData.donorInfo.pinCode} onChange={handleChange} placeholder="Pin Code" />
-                    <input name="amount" type="number" value={donationAmount} onChange={handleChange} placeholder="Donation Amount" />
-                </div>
-                <div className="submitOrder">
-                    <button onClick={handleDonate} className="submit-order-btn">Donate Now</button>
-                </div>
-            </div>
+        <div className="firstdiv">
+        <div className="donation-page">
+        <h2>Make a Donation</h2>
+        <div className="donation-info">
+          <input
+            name="name"
+            value={donationData.donorInfo.name}
+            onChange={handleChange}
+            placeholder="Your Name"
+          />
+          <input
+            name="email"
+            value={donationData.donorInfo.email}
+            onChange={handleChange}
+            placeholder="Your Email"
+          />
+          {/* <input
+            name="address"
+            value={donationData.donorInfo.address}
+            onChange={handleChange}
+            placeholder="Address"
+          />
+          <input
+            name="city"
+            value={donationData.donorInfo.city}
+            onChange={handleChange}
+            placeholder="City"
+          />
+          <input
+            name="state"
+            value={donationData.donorInfo.state}
+            onChange={handleChange}
+            placeholder="State"
+          /> */}
+          <input
+            name="country"
+            value={donationData.donorInfo.country}
+            onChange={handleChange}
+            placeholder="Country"
+          />
+          {/* <input
+            name="pinCode"
+            value={donationData.donorInfo.pinCode}
+            onChange={handleChange}
+            placeholder="Pin Code"
+          /> */}
+          <input
+            name="amount"
+            type="number"
+            value={donationAmount}
+            onChange={handleChange}
+            placeholder="Donation Amount"
+          />
         </div>
+        <div className="submitOrder">
+          <button onClick={handleDonate} className="submit-order-btn">
+            Donate Now
+          </button>
+        </div>
+      </div>
+      </div>
     );
 };
 

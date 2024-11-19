@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import './Donation.css';
 import { useNavigate } from "react-router-dom";
-
+import dotenv from "dotenv";
+// const dotenv = require("dotenv");
 const Api_URL = "http://localhost:5000";
 
 const Donation = () => {
@@ -92,7 +93,7 @@ const Donation = () => {
             const razOrder = data.razorpayorder;
 
             const options = {
-                key: "r",  // Use your Razorpay key here
+                key: process.env.MY_KEY,  // Use your Razorpay key here
                 amount: razOrder.amount,
                 currency: "INR",
                 name: "Charity Organization",

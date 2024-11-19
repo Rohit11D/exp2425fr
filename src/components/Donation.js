@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from "react";
 import './Donation.css';
 import { useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
+
 // const dotenv = require("dotenv");
 const Api_URL = "http://localhost:5000";
-
+const MY_KEY = process.env.REACT_APP_MY_KEY;
+console.log(MY_KEY);
 const Donation = () => {
     const navigate = useNavigate();
     const [donationAmount, setDonationAmount] = useState(0);
@@ -93,7 +94,7 @@ const Donation = () => {
             const razOrder = data.razorpayorder;
 
             const options = {
-                key: process.env.MY_KEY,  // Use your Razorpay key here
+                key:MY_KEY,  // Use your Razorpay key here
                 amount: razOrder.amount,
                 currency: "INR",
                 name: "Charity Organization",

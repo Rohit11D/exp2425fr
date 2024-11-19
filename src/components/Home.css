@@ -1,3 +1,170 @@
+/* General Styles for Disaster List */
+
+.disaster-list .news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  align-items: center;
+}
+.news-head{
+text-shadow: none;
+font-size: 1.5rem;
+margin-top: 10px;
+padding-left: 5px;
+}
+/* Individual Disaster Card */
+.disaster-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+ 
+  align-items: center;
+}
+
+.disaster-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Disaster Title */
+.disaster-card h3 {
+  font-size: 1.2rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+/* Disaster Information */
+.disaster-card p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.disaster-card p a {
+  color: #ffa500;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.disaster-card p a:hover {
+  color: #e69500;
+}
+
+/* GLIDE Number and Status */
+.disaster-card .disaster-info {
+  margin-top: 15px;
+}
+
+.disaster-card .disaster-info span {
+  font-weight: bold;
+  color: #003366;
+}
+
+.disaster-card .disaster-info .disaster-status {
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .disaster-list {
+    padding: 10px;
+  }
+
+  .disaster-card {
+    padding: 15px;
+  }
+
+  .disaster-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .disaster-card p {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* General section styling */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* About Section */
+.about {
+  background-color: #f4f4f4;
+  color: #333;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.about p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #555;
+}
+
+/* Contact Section */
+.contact {
+  background-color: #ffffff;
+  color: #333;
+  padding: 60px 20px;
+  border-top: 1px solid #ddd;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.contact p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  color: #555;
+}
+
+.contact a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Social media links */
+.contact p a {
+  margin: 0 5px;
+}
+
+.contact p a:hover {
+  color: #0056b3;
+}
+
+/* Section Spacing */
+.about, .contact {
+  padding: 80px 20px;
+}
+
+
 /* Resetting margin, padding and box sizing */
 * {
   margin: 0;
@@ -39,7 +206,7 @@ body {
 }
 
 .navbar .nav-links a:hover {
-  color: #ffa500;
+  /* color: #ffa500; */
 }
 .hamburger {
   display: none;

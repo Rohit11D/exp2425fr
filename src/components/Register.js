@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css"; // Ensure this import is correct
 
-const Api_URL = "http://localhost:5000";
+const Api_URL = "https://zqrxpn-5000.csb.app";
 
 const Register = ({ history }) => {
   const [formData, setFormData] = useState({

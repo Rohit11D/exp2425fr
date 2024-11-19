@@ -15,7 +15,7 @@ const LoginVol = () => {
     e.preventDefault();
 
     // Backend API for volunteer registration
-    const apiUrl = "http://localhost:5000/loginAsVolunteer";
+    const apiUrl = "https://zqrxpn-5000.csb.app/loginAsVolunteer";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",

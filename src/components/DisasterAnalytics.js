@@ -31,7 +31,7 @@ Chart.register(
   Title
 );
 
-const Api_URL = "http://localhost:5000";
+const Api_URL = "https://zqrxpn-5000.csb.app";
 
 const DisasterAnalytics = () => {
   const chartRef = useRef(null);

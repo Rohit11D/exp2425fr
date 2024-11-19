@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const Api_URL = "http://localhost:5000";
+const Api_URL = "https://zqrxpn-5000.csb.app";
 
 const DisasterMap = () => {
   useEffect(() => {

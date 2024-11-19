@@ -11,7 +11,7 @@ import {
   getUserLocation,
 } from "./ResMapUtils";
 
-const Api_URL = "http://localhost:5000";
+const Api_URL = "https://zqrxpn-5000.csb.app";
 
 const ResMap = () => {
   const mapRef = useRef(null);

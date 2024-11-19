@@ -205,9 +205,7 @@ body {
   transition: color 0.3s ease;
 }
 
-.navbar .nav-links a:hover {
-  /* color: #ffa500; */
-}
+
 .hamburger {
   display: none;
   flex-direction: column;

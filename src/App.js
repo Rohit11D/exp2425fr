@@ -21,6 +21,7 @@ import LoginVol from "./components/LoginVolunteer.js";
 import VolunteerDashboard from "./components/VolunteerDashboard.js";
 import VolunteerGuide from "./components/VolunteerGuide.js";
 import SafetyGuide from "./components/SafetyGuide .js";
+import Donation from "./components/Donation.js";
 const App = () => {
   return (
     <AuthProvider>
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/volunteerDashboard" element={<VolunteerDashboard />} />
           <Route path="/volunteerGuide" element={<VolunteerGuide />} />
           <Route path="/safetyGuide" element={<SafetyGuide />} />
+          <Route path="/donation" element={<Donation />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

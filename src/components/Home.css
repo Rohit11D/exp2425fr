@@ -232,6 +232,43 @@ body {
 .cta-button:hover {
   background-color: #e69500;
 }
+.reportEvent {
+  position: fixed; /* Fix position to the screen */
+  top: 40%;    /* Adjust the distance from the bottom */
+  left: 20px;     /* Adjust the distance from the right */
+  z-index: 1000;   /* Make sure the button stays on top of other elements */
+  display: inline-block;
+  background: linear-gradient(45deg, #ff8c00, #ff6347); /* Bright gradient */
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Hover effects */
+.reportEvent:hover {
+  background: linear-gradient(45deg, #ff6347, #ff8c00);
+  transform: scale(1.05); /* Slightly enlarge the button */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Nested Link styling (optional if Link adds its own styles) */
+.reportEvent a {
+  text-decoration: none;
+  color: white; /* Ensure link text inherits the correct color */
+}
+
+/* Optional: Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .reportEvent {
+    font-size: 14px;
+    padding: 12px 25px;
+  }
+}
 
 /* Hero Section */
 .hero {

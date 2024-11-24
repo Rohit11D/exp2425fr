@@ -22,6 +22,8 @@ import VolunteerDashboard from "./components/VolunteerDashboard.js";
 import VolunteerGuide from "./components/VolunteerGuide.js";
 import SafetyGuide from "./components/SafetyGuide .js";
 import Donation from "./components/Donation.js";
+import ReportEvent from "./components/ReportEvent.js";
+import ResMapObstacle from "./components/ResMapObstacle.js";
 const App = () => {
   return (
     <AuthProvider>
@@ -40,6 +42,8 @@ const App = () => {
           <Route path="/volunteerGuide" element={<VolunteerGuide />} />
           <Route path="/safetyGuide" element={<SafetyGuide />} />
           <Route path="/donate" element={<Donation />} />
+          <Route path="/reportEvent" element={<ReportEvent />} />
+          <Route path="/resMapObstacle" element={<ResMapObstacle />} />
           {/* <Route path="/upload" element={<UploadResume />} />
                     <Route path="/reviews" element={<ReviewResumes />} />
                     <Route path="/my-reviews" element={<ViewReviews />} /> {/* Add the new route */}

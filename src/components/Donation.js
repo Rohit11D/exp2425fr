@@ -202,7 +202,7 @@ const Donation = () => {
             type="number"
             value={donationAmount}
             onChange={handleChange}
-            placeholder="Donation Amount"
+            placeholder="0"
           />
         </div>
         <div className="submitOrder">

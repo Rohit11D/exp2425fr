@@ -104,8 +104,8 @@ for (let i = 0; i < news.length; i++) {
             <button className="cta-button">
               <Link to="/donate">Donate</Link>
             </button>
-            <li><Link to="/mainMap">Events</Link></li>
-            <li><Link to="/resMap">Resources</Link></li>
+            <li><Link to="/mainMap">MajorEvents</Link></li>
+            <li><Link to="/resMapObstacle">Resources</Link></li>
             {/* <li>
               <a href="#">Home</a>
             </li> */}
@@ -145,7 +145,15 @@ for (let i = 0; i < news.length; i++) {
           </div>
         </nav>
       </header>
-
+          
+          {isAuthenticated && (
+            <div className="reportEvent">
+              <Link to="/reportEvent" className="navLink">
+                Post An Event
+              </Link>
+              </div>
+            )}
+         
       <section class="hero">
         <div class="hero-content">
           <h1>Disaster Management & Relief</h1>

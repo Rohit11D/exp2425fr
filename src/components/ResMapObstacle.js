@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "./ResMap.css";
 import "leaflet/dist/leaflet.css";
+import { addEvents } from "./AddEvents";
 import { Link } from "react-router-dom";
 import {
   initMap,
@@ -13,12 +14,12 @@ import {
 
 const Api_URL = "http://localhost:5000";
 
-const ResMap = () => {
+const ResMapObstacle = () => {
   const mapRef = useRef(null);
   const [resources, setResources] = useState([]);
   const [selectedResourceType, setSelectedResourceType] = useState("");
   const [userLocation, setUserLocation] = useState(null);
-
+  const [events, setEvents] = useState([]);
   // Fetch resources from the backend
   useEffect(() => {
     async function fetchResources() {
@@ -33,11 +34,12 @@ const ResMap = () => {
     fetchResources();
   }, []);
 
-  // Initialize the map and get user location
-  useEffect(() => {
+ // Initialize the map and get user location
+ useEffect(() => {
     if (!mapRef.current) {
       mapRef.current = initMap(); // Initialize map
-      // getUserLocation(mapRef.current, setUserLocation); // Set user location on map load
+      getUserLocation(mapRef.current, setUserLocation);
+     
     }
 
     // return () => {
@@ -48,6 +50,37 @@ const ResMap = () => {
     // };
   }, []);
 
+
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const response = await fetch(`${Api_URL}/events`);
+        console.log("event ressss",response);
+        const data = await response.json();
+        console.log("Fetched events:", data);
+        setEvents(data);
+        console.log("event seted ",events);
+      } catch (error) {
+        console.error("Failed to fetch resources:", error);
+      }
+    }
+    fetchEvents();
+  }, []);
+
+  useEffect(() => {
+    // When the events data is fetched and available
+    if (events.length > 0 && mapRef.current) {
+      console.log("Fetched events 000000000:", events); // Log the events after they're updated
+      addEvents(mapRef.current, events); // Add events to the map
+    }
+  }, [events]); 
+
+
+  
+ 
+
+
+  
   // Update map with filtered resources and show route to nearest resource
   useEffect(() => {
     if (mapRef.current && resources.length > 0) {
@@ -134,4 +167,4 @@ const ResMap = () => {
   );
 };
 
-export default ResMap;
+export default ResMapObstacle;

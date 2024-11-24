@@ -70,6 +70,50 @@ export function initMap() {
 //   }
 // }
 
+export async function getUserCoordinates(setUserLocation) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async function (position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        // const lat = 23.8419968;
+        // const lon = 91.4161664;
+        console.log("User location:", lat, lon);
+        try {
+          // const response = await fetch(
+          //   `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=f8a0aeb4893745f885eba8d86a52e899`
+          // );
+          // const response = await fetch(
+          //   "https://ipinfo.io/json?token=33697b03fb250f"
+
+          // );
+          // console.log(response);
+          // const data = await response.json();
+          console.log("User location:2  ", lat, lon);
+          // Store the coordinates in the setCoordinates function
+          setUserLocation({ lat, lon });
+         
+        } catch (error) {
+          console.error("Failed to fetch location data:", error);
+        }
+      },
+      function (error) {
+        if (error.code === 1) {
+          console.error("User denied location permission.");
+        } else if (error.code === 2) {
+          console.error("Position unavailable.");
+        } else if (error.code === 3) {
+          console.error("Request timed out.");
+        }
+      },
+      { enableHighAccuracy: true }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+}
+
+
 export async function getUserLocation(map, setUserLocation) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
